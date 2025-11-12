@@ -1,55 +1,51 @@
-// import express from 'express';
+import express, { Application, Request, Response } from "express";
+import cors from "cors";
+import passport from "passport";
+import envVars from "./app/config/env";
+import moduleRouter from "./app/routes";
+import cookieParser from "cookie-parser";
+import expressSession from "express-session";
+import notFoundHandler from "./app/middlewares/notFoundHandler";
+import globalErrorHandler from "./app/middlewares/globalErrorHandler";
+import "./app/config/passport";
 
-// import authRoutes from './modules/auth/auth.routes';
+// Express application
+const app: Application = express();
 
-// import dotenv, { config } from 'dotenv';
-// import userRoutes from './modules/users/user.routes';
-
-// dotenv.config();
-
-// const app = express();
-
-// app.use(express.json());
-
-// config();
-
-// app.use('/auth', authRoutes);
-// app.use('/users', userRoutes);
-// // app.use('/drivers', driverRoutes);
-// // app.use('/rides', rideRoutes);
-
-// app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
-//   res.status(err.status || 500).json({ message: err.message });
-// });
-
-// const PORT = process.env.PORT || 3000;
-
-// app.listen(PORT, () => {
-//   console.log(`Server running on port ${PORT}`);
-// });
-
-import express, { Request, Response } from 'express';
-import cors from 'cors'; 
-import authRoutes from './modules/auth/auth.routes';
-import userRoutes from './modules/users/user.routes';
-
-
-
-const app = express();
-
-app.use(express.json());
+// Middlewares
 app.use(
-  cors()
+  expressSession({
+    secret: envVars.EXPRESS_SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(cookieParser());
+app.use(express.json());
+app.set("trust proxy", 1);
+app.use(express.urlencoded({ extended: true }));
+app.use(
+  cors({
+    origin: ["http://localhost:3000", `${envVars.FRONTEND_URL}`],
+    credentials: true,
+  })
 );
 
+// routes middleware
+app.use("/api/v1", moduleRouter);
 
-app.use('/auth', authRoutes);
-app.use('/users', userRoutes);
-
-
+// Root route
 app.get("/", (req: Request, res: Response) => {
-  res.send("Server connected successfully");
+  res.send("Welcome to the RideWave Server");
 });
 
+// Handle global error
+app.use(globalErrorHandler);
+
+// Handle not found
+app.use(notFoundHandler);
 
 export default app;

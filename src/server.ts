@@ -1,22 +1,71 @@
-import mongoose from 'mongoose';
+/* eslint-disable no-console */
+import app from "./app";
+import { Server } from "http";
+import mongoose from "mongoose";
+import envVars from "./app/config/env";
+import defaultAdmin from "./app/utils/defaultAdmin";
+import connectRedis from "./app/config/redis";
 
-import app from './app';
-import { config } from './config/db';
+let server: Server;
+const port = envVars.PORT || 3000;
 
-async function main() {
+// Initialize the application
+const bootstrap = async () => {
   try {
-    if (!config.mongoUri) {
-      throw new Error('MongoDB URI not found in environment variables');
-    }
-    await mongoose.connect(config.mongoUri);
-    console.log('Database connected');
+    // Connect to MongoDB
+    await mongoose.connect(envVars.DB_URL);
+    console.log("Successfully connected to MongoDB using Mongoose");
 
-    app.listen(config.port, () => {
-      console.log(`Server running on port ${config.port}`);
+    // Start the express server
+    server = app.listen(port, () => {
+      console.log(`Server running on port ${port}`);
     });
-  } catch (err) {
-    console.error('Failed to connect DB', err);
+  } catch (error) {
+    console.error({
+      success: false,
+      message: "MongoDB connection failed",
+      error,
+    });
+    process.exit(1);
   }
-}
+};
 
-main();
+// Initialize the application
+(async () => {
+  await connectRedis()
+  await bootstrap();
+  await defaultAdmin();
+})();
+
+// Graceful shutdown handlers
+const handleExit = (signal: string, error?: unknown) => {
+  const errorInfo = error ? { error } : {};
+
+  console.error({
+    message: `${signal} received. Server shutting down...`,
+    ...errorInfo,
+  });
+
+  if (server) {
+    server.close(() => {
+      process.exit(1);
+    });
+  } else {
+    process.exit(1);
+  }
+};
+
+// Unhandled promise rejection
+process.on("unhandledRejection", (error) => {
+  handleExit("Unhandled Rejection", error);
+});
+
+// Uncaught exception
+process.on("uncaughtException", (error) => {
+  handleExit("Uncaught Exception", error);
+});
+
+
+// Process termination signals
+process.on("SIGTERM", () => handleExit("SIGTERM"));
+process.on("SIGINT", () => handleExit("SIGINT"));
