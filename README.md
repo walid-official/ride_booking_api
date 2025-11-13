@@ -1,8 +1,4 @@
 <div align="center">
-  <img
-    src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12&height=200&section=header&text=Velocia%20API&fontSize=50&fontAlignY=35&animation=fadeIn&desc=Production-Ready%20Transportation%20Platform&descAlignY=55&descSize=18"
-    alt="Header"
-  />
 </div>
 
 <div align="center">
@@ -24,7 +20,7 @@ secure authentication, and comprehensive administrative controls.</p>
 
 <div align="center">
     
-  [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?style=for-the-badge)](https://github.com/zahid-official/milestone-17)
+  [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?style=for-the-badge)](https://github.com/walid-official/milestone-17)
   [![Node.js](https://img.shields.io/badge/Node.js-18.x-3C873A.svg?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org)
   [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
   [![MongoDB](https://img.shields.io/badge/MongoDB-6.0-47A248.svg?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
@@ -36,7 +32,7 @@ secure authentication, and comprehensive administrative controls.</p>
   [![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black.svg?style=for-the-badge&logo=vercel)](https://vercel.com)
   [![Redis](https://img.shields.io/badge/Redis-7.0-DC382D.svg?style=for-the-badge&logo=redis&logoColor=white)](https://redis.io/)
   [![License](https://img.shields.io/badge/license-MIT-22333b.svg?style=for-the-badge)](LICENSE)
-  [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-0081a7.svg?style=for-the-badge)](https://github.com/zahid-official/milestone-17/pulls)
+  [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-0081a7.svg?style=for-the-badge)](https://github.com/walid-official/milestone-17/pulls)
 </div>
 
 ## ✨ Features
@@ -209,7 +205,7 @@ graph TB
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/zahid-official/milestone-17.git
+git clone https://github.com/walid-official/milestone-17.git
 cd milestone-17
 
 # 2. Install dependencies
@@ -596,7 +592,7 @@ project/
 
 <div>
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/zahid-official/milestone-17)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/walid-official/milestone-17)
 
 </div>
 
@@ -640,16 +636,16 @@ vercel --prod
 ## 🌟 **Author**
 
 <div align="center">
-  <a href="https://github.com/zahid-official">
-    <img src="https://github.com/zahid-official.png" width="150" height="150" style="border-radius: 50%;" alt="Zahid Official" />
+  <a href="https://github.com/walid-official">
+    <img src="https://github.com/walid-official.png" width="150" height="150" style="border-radius: 50%;" alt="walid Official" />
   </a>
   
-  <h3>Zahid Official</h3>
+  <h3>walid Official</h3>
   <p><b>Web Developer | Tech Enthusiast</b></p>
   
-  [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/zahid-official)
-  [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/zahid-web)
-  [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:zahid.official8@gmail.com)
+  [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/walid-official)
+  [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/walid-web)
+  [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:walid.official8@gmail.com)
   
   <p>Built with passion and dedication to create scalable solutions</p>
 </div>
